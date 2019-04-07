@@ -18,7 +18,7 @@ public class NeighboursParty {
             int oddMax = 0;
             int max = ticket[0];
             String oddMaxPath = "";
-            for (int i = 0; i < n; i++) {
+            for (int i = 1; i < n; i++) {
 
                 if (ticket[i] > max) {
                     max = ticket[i];
@@ -35,6 +35,25 @@ public class NeighboursParty {
                 }
 
             }
+
+            for (int i = n - 1; i >= 0; i--) {
+
+                if (ticket[i] > 0) {
+
+                    if (ticket[i] < ticket[i + 1]) {
+
+
+
+                    }
+
+                    oddMax += ticket[i];
+                    oddMaxPath += ticket[i];
+                } else {
+                    i++;
+                }
+
+            }
+
             int evenMax = 0;
             String evenMaxPath = "";
             for (int i = n - 2; i >= 0; i -= 2) {
@@ -61,5 +80,16 @@ public class NeighboursParty {
             }
         }
 
+    }
+
+    private static int getMaxElement(int a, int b, int c, int d, int[] elem) {
+        if (elem[a] > 0 && elem[b] > 0 && elem[c] > 0 && elem[d] > 0) {
+            return (elem[a] + elem[c] > elem[c] + elem[d]) ? a : b;
+        }
+        else if(elem[b] < 0)
+        {
+            return a;
+        }
+        return a;
     }
 }
