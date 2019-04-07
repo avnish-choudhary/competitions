@@ -1,0 +1,40 @@
+//gcc 5.4.0
+
+#include  <stdio.h>
+
+#include  <stdbool.h>
+
+bool isDigitPresent(int x, int d) ;
+int main(void)
+{
+    int n;
+    printf("Hello, world!\n");
+    int testCase;
+        scanf("%d",&testCase);
+        for (int t = 1; t <= testCase; t++) {
+            int n;
+             scanf("%d",&n);
+            for (int i = n/2; i >0; i--) {
+
+                if (!isDigitPresent(i, 4) && !isDigitPresent(n - i, 4)) {
+                    printf("Case #%d: %d %d\n", t, i, (n - i));
+                    break;
+                }
+            }
+        }
+
+    return 0;
+}
+
+ bool isDigitPresent(int x, int d) {
+        // Breal loop if d is present as digit
+        while (x > 0) {
+            if (x % 10 == d)
+                break;
+
+            x = x / 10;
+        }
+
+        // If loop broke
+        return (x > 0);
+    }
